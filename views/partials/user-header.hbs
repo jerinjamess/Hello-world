@@ -1,40 +1,44 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <!-- Include Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  
-  <style>
-    /* Dark mode styles */
-    .navbar-dark .navbar-nav .nav-link {
-      color: #fff;
-  }
-  </style>
-  
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">N-mart</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Home</a>
+  <head>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+     .navText{ color: white;font-weight: bold; font-size: 20px;}
+    </style>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg  bg-primary">
+      <a class=" navText" href="#">N-mart</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link navText" href="/login">Home</a> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navText" href="/views/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart</a>
+          </li>
+           <li class="nav-item ">
+            <a class="nav-link navText"href="/merchant-login"><i class="fa fa-sign-in" aria-hidden="true"></i>Merchant Login</a>
+          </li>
+             <li class="nav-item">
+          <a class="nav-link navText" href="/view-orders"><i class="fa fa-list-ol" aria-hidden="true"></i>View Orders</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/views/cart">Cart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/merchant-login">Merchant Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/view-orders">View Orders</a>
-        </li>
-        <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle navText" href="#" id="navbarDropdownCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Shop by Category
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownCategory">
@@ -44,29 +48,28 @@
         <!-- Add more categories as needed -->
       </div>
       </li>
-      </ul>
-    <form class="form-inline my-2 my-lg-0">
-     <input class="form-control mr-sm-2" type="search" placeholder="Search your" aria-label="Search" size="80">
-
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-      
-      <div class="dropdown ml-auto">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+        </ul>
+        <form class="form-inline">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn  " type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+            <div class="dropdown ml-auto">
+        <button class="btn btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{user.name}}
         </button>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownCategory">
           <a class="dropdown-item" href="/logout">Log out</a>
           <a class="dropdown-item" href="#">Profile</a>
           <a class="dropdown-item" href="#">About Us</a>
         </div>
       </div>
-    </div>
-  </nav>
+      </div>
+    </nav>
 
-  <!-- Include Bootstrap JS (jQuery must be included before Bootstrap) -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+    <!-- Include Bootstrap JS (jQuery must be included before Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
 </html>

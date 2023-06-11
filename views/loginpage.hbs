@@ -1,141 +1,76 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Login</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <style>
-    body {
-      background: linear-gradient(45deg, #f3e3f0, #f7cde8);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+      .error{ color: red; font-weight: bold; } .img{ height: 100%; } .card{ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,
+      0, 0, 0.19); }
+    </style>
 
-    .wrapper {
-      width: 350px;
-      margin: 8% auto;
-      padding: 30px;
-      border-radius: 20px;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 0 17px rgba(0, 0, 0, 0.2);
-    }
+  </head>
+  <body>
+    <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-xl-10">
+            <div class="card" style="border-radius: 1rem">
+              <div class="row g-0">
+                <div class="col-md-6 col-lg-5 d-none d-md-block">
+                  <img src="images/shopping.png" alt="login form" class="img-fluid img" style="border-radius: 1rem 0 0 1rem" />
+                </div>
+                <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div class="card-body p-4 p-lg-5 text-black">
+                    <form action="/login" method="post">
+                      {{#if loginError}}
+                        <p class="error">Invalid Username or Password, please try again</p>
+                      {{else}}
+                      {{/if}}
 
-    .heading {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+                      <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">Sign into your account</h5>
 
-    .heading h1 {
-      color: #555;
-      font-size: 30px;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      margin-bottom: 20px;
-    }
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          placeholder="Email"
+                          name="email"
+                          required
+                          id="form2Example17"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form2Example17">Email address</label>
+                      </div>
 
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+                      <div class="form-outline mb-4">
+                        <input
+                          type="password"
+                          placeholder="Password"
+                          name="password"
+                          required
+                          id="form2Example27"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form2Example27">Password</label>
+                      </div>
 
-    .form {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+                      <div class="pt-1 mb-4">
+                        <button type="submit" name="button" class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                      </div>
 
-    .form input,
-    .form button {
-      width: 100%;
-      height: 40px;
-      margin-bottom: 20px;
-      border: none;
-      outline: none;
-      padding-left: 40px;
-      box-sizing: border-box;
-      font-size: 15px;
-      color: #555;
-      border-radius: 20px;
-    }
-
-    .form input {
-      background-color: #f2f2f2;
-    }
-
-    .form input::placeholder {
-      color: #999;
-      font-weight: bold;
-    }
-
-    .form i {
-      position: absolute;
-      left: 15px;
-      color: #555;
-      font-size: 17px;
-      top: 12px;
-    }
-
-    .form button {
-      background-color: #ff9800;
-      letter-spacing: 1px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .form button:hover {
-      background-color: #f57c00;
-    }
-
-    .links {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .links a {
-      color: #555;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <div class="heading">
-      <h1>Login Form</h1>
-    </div>
-    <div class="logo">
-      <img src="https://cdn-icons-png.flaticon.com/128/5087/5087579.png" alt="Your Logo">
-    </div>
-    <div class="form">
-      <form action="/login" method="post">
-        {{#if loginError}}
-        <p class="error">Invalid Username or Password, please try again</p>
-        {{else}}
-        <p class="error">Enter your Username and Password</p>
-        {{/if}}
-        <span>
-          <i class="fa fa-user"></i>
-          <input type="text" placeholder="Email" name="email" required>
-        </span><br>
-        <span>
-          <i class="fa fa-lock"></i>
-          <input type="password" placeholder="Password" name="password" required>
-        </span><br>
-        <button type="submit" name="button" class="btn login_btn">Login</button>
-      </form>
-    </div>
-    <div class="links">
-      <div class="d-flex justify-content-center">
-        Don't have an account? <a href="signup" class="ml-2">Sign Up</a>
+                      <a class="small text-muted" href="/views/forgotpassword">Forgot password?</a>
+                      <p class="mb-5 pb-lg-2" style="color: #393f81">
+                        Don't have an account?
+                        <a href="signup" style="color: #393f81">Register here</a>
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <a href="/views/forgotpassword">Forgot your password?</a>
-      </div>
-    </div>
-  </div>
-</body>
+    </section>
+
+  </body>
 </html>
