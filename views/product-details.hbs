@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Details</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .user-photo {
+      max-width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    .star-icon {
+      width: 25px; /* Adjust the width to your desired size */
+      height: 25px; /* Adjust the height to your desired size */
+    }
+    .question-form,
+    .report-form {
+      display: none;
+      margin-top: 10px;
+    }
+    .question-form.show,
+    .report-form.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>{{product.Name}}</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="/images/{{product._id}}.jpg" alt="Product Image" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <p>Details: {{product.Description}}</p>
+        <p>Price: {{product.price}}</p>
+        <p>Availability: In Stock</p>
+        <a href='/place-order-single?proId={{product._id}}&cost={{product.price}}' class="btn btn-primary mt-3" style="width:100%;"><b>Buy Now</b></a>
+        <a href='/add-to-cart?proId={{product._id}}' class="btn btn-primary mt-3" style="width:100%;"><b>Add to Cart</b></a>
+        <div>
+          <button id="question-button" class="btn btn-primary mt-3">Ask Questions</button>
+          <button id="report-button" class="btn btn-danger mt-3">Report the Product</button>
+        </div>
+        <form action="/productenquiry?proId={{product._id}}" method="post" id="question-form" class="question-form">
+          <label for="question-select">Select a question:</label>
+          <select id="question-select" class="form-control">
+            <option value="q1">Question 1</option>
+          </select>
+          <br>
+          <label for="question-text">Your question:</label>
+          <textarea id="question-text" name="message" rows="4" cols="50" class="form-control"></textarea>
+          <br>
+          <button type="submit" onclick="showMessage()" class="btn btn-success">Submit</button>
+        </form>
+        <form action="/productReport?proId={{product._id}}" method="post" id="report-form" class="report-form">
+          <label for="report-select">Reason for Report:</label>
+          <select id="report-select" class="form-control">
+            <option value="r1">Reason 1</option>
+          </select>
+          <br>
+          <label for="report-text">Additional Details:</label>
+          <textarea id="report-text" name="message" rows="4" cols="50" class="form-control"></textarea>
+          <br>
+          <button type="submit" onclick="showMessage2()" class="btn btn-danger">Submit Report</button>
+        </form>
+      </div>
+    </div>
+    <section>
+      <br>
+      <br>
+      <h5>Highlights:</h5>
+      <p>{{product.Highlight}}</p>
+    </section>
+    <section>
+      <br>
+      <br>
+      <h5>Special Offers:</h5>
+      <p>{{product.offer}}</p>
+    </section>
+    <hr>
+    <h1></h1>
+    <h2></h2>
+    {{#if reviews}}
+    <section>
+       <h3>User Reviews</h3>
+      <div class="container">
+        <div class="row">
+          {{#each reviews}}
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{this.Name}}</h5>
+                <h6>Rating: {{this.rating}} <img src="https://em-content.zobj.net/thumbs/160/whatsapp/238/white-medium-star_2b50.png" alt="Star" class="star-icon"></h6>
+                <p class="card-text">{{this.review}}</p>
+                <a href="/images/{{this._id}}.jpg" target="_blank">
+                  <img style="width:200px;height:200px" src="/images/{{this._id}}.jpg" alt="{{this.userName}}" data-toggle="modal" data-target="#imageModal">
+                </a>
+                <p>User: {{this.userName}}  Date: {{this.date}}</p>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+    {{/if}}
+
+    <!-- Include Bootstrap JS (jQuery must be included before Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      function showMessage() {
+        alert("Corresponding merchant will answer your question to your registered email or phone");
+      }
+
+      function showMessage2() {
+        alert("Action will be taken if the complaint is genuine!");
+      }
+
+      const questionButton = document.getElementById('question-button');
+      const questionForm = document.getElementById('question-form');
+      const reportButton = document.getElementById('report-button');
+      const reportForm = document.getElementById('report-form');
+
+      questionButton.addEventListener('click', function() {
+        questionForm.classList.toggle('show');
+        reportForm.classList.remove('show'); // Hide report form when showing question form
+      });
+
+      reportButton.addEventListener('click', function() {
+        reportForm.classList.toggle('show');
+        questionForm.classList.remove('show'); // Hide question form when showing report form
+      });
+    </script>
+  </body>
+  </html>

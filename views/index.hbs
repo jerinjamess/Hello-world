@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+
+    <style>
+        .carousel-inner {
+            max-height: 600px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .card-deck {
+            margin-top: 40px;
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            margin-top: 10px;
+        }
+
+        .recently-added {
+            margin-top: 40px;
+        }
+
+        .product-card {
+            height: 100%;
+        }
+
+        
+
+        .product-card .card-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .product-card .card-text {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .product-card .btn-primary,
+        .product-card .btn-secondary {
+            width: 100%;
+        }
+    </style>
+    <style>
+      
+
+    </style>
+
+    <title>Professional Homepage</title>
+</head>
+<body>
+    <section>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner" style="max-height:auto" >
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://img.freepik.com/free-vector/flat-furniture-sale-banner-with-photo_23-2148926442.jpg?w=2000" alt="First slide">
+                </div>
+                {{#each adds}}
+                <div class="carousel-item">
+                    <a href="/addItems??addId={{_id}}">
+                    
+                        <img class="d-block w-100"  src="/images/{{this._id}}.jpg" alt="Second slide">
+                        
+                       
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <h2 class="section-heading">Shop by category</h2>
+    </section>
+
+    <section>
+    <div class="card-deck">
+    <div class="card">
+        <img  src="https://rukminim1.flixcart.com/image/416/416/j4x207k0/cycle/z/f/s/robust-7-speed-robust-7-speed-17-hi-bird-original-imaevpwxghrrfh63.jpeg?q=70" alt="Cycles">
+        <div class="card-body">
+            <h5 class="card-title">Cycles</h5>
+            <p class="card-text">Gear cycles starting from ₹4999</p>
+            <a href="#" class="btn btn-primary">View All</a>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img  src="https://dlifeinteriors.com/wp-content/uploads/2020/09/L-shape-sofa-design-in-Kerala.jpg" alt="Furniture for Home">
+        <div class="card-body">
+            <h5 class="card-title">Furniture for Home</h5>
+            <p class="card-text">Sofa, Coffee Table, Chest of Drawers, Bookcase, Armchair, Dining room table... from your favorite shops at cheap rates</p>
+            <a href="#" class="btn btn-primary">View All</a>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img  src="https://www.gbssystems.com/wp-content/uploads/2023/01/HP-Pavilion-Gaming-Laptop-15-front-view.png" alt="Laptops">
+        <div class="card-body">
+            <h5 class="card-title">Laptops</h5>
+            <p class="card-text">High-performance, thin and lightweight laptops starting from ₹25499.</p>
+            <a href="#" class="btn btn-primary">View All</a>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <section class="recently-added">
+        <h2 class="section-heading">Recently added best-selling products</h2>
+        <div class="container mt-4 h-100">
+            <div class="row">
+                {{#each products}}
+                <div class="col-md-3 p-3">
+                    <div class="card product-card">
+                        <img class="card-img-top"  src="/images/{{this._id}}.jpg" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.Name}}</h5>
+                            <p class="card-text">Price: {{this.price}}</p>
+                            <p class="card-text">Shop: {{this.shopName}}</p>
+                            <a href="/add-to-cart?proId={{this._id}}" class="btn btn-primary">Add to Cart</a>
+                            <a href="/product-details?proId={{this._id}}" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(45deg, #f3e3f0, #f7cde8);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      width: 350px;
+      margin: 8% auto;
+      padding: 30px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 17px rgba(0, 0, 0, 0.2);
+    }
+
+    .heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .heading h1 {
+      color: #555;
+      font-size: 30px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form input,
+    .form button {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      border: none;
+      outline: none;
+      padding-left: 40px;
+      box-sizing: border-box;
+      font-size: 15px;
+      color: #555;
+      border-radius: 20px;
+    }
+
+    .form input {
+      background-color: #f2f2f2;
+    }
+
+    .form input::placeholder {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .form i {
+      position: absolute;
+      left: 15px;
+      color: #555;
+      font-size: 17px;
+      top: 12px;
+    }
+
+    .form button {
+      background-color: #ff9800;
+      letter-spacing: 1px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .form button:hover {
+      background-color: #f57c00;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .links a {
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="heading">
+      <h1>Login Form</h1>
+    </div>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/5087/5087579.png" alt="Your Logo">
+    </div>
+    <div class="form">
+      <form action="/login" method="post">
+        {{#if loginError}}
+        <p class="error">Invalid Username or Password, please try again</p>
+        {{else}}
+        <p class="error">Enter your Username and Password</p>
+        {{/if}}
+        <span>
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="Email" name="email" required>
+        </span><br>
+        <span>
+          <i class="fa fa-lock"></i>
+          <input type="password" placeholder="Password" name="password" required>
+        </span><br>
+        <button type="submit" name="button" class="btn login_btn">Login</button>
+      </form>
+    </div>
+    <div class="links">
+      <div class="d-flex justify-content-center">
+        Don't have an account? <a href="signup" class="ml-2">Sign Up</a>
+      </div>
+      <div class="d-flex justify-content-center">
+        <a href="/views/forgotpassword">Forgot your password?</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

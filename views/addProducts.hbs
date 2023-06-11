@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Cards</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card {
+      margin-bottom: 20px;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 200px;
+      background-image: url('product-image.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-content {
+      padding: 16px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .card-description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .card-price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff5722;
+    }
+
+    .card-button {
+      display: inline-block;
+      background-color: #ff5722;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .card-button:hover {
+      background-color: #ff784e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      {{#each products}}
+      <div class="col-lg-3 col-md-6">
+        <div class="card">
+          <div class="card-image"></div>
+          
+           <img class="card-img-top" src="/images/{{this._id}}.jpg" alt="Card image cap">
+                    
+          <div class="card-content">
+            <h2 class="card-title">{{this.Name}}</h2>
+            <p class="card-description">{{this.Description}}</p>
+            <p class="card-price">{{this.price}}</p>
+            <a href="#" class="card-button">Remove product</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      
+      
+      
+        </div>
+      </div>
+</body>
+</html>

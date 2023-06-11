@@ -1,0 +1,61 @@
+<section>
+  
+    <div class=container>
+        <div class="row">
+
+       </div>
+      
+    <table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Date</th>
+      <th scope="col">Address</th>
+      <th scope="col">Payment method</th>
+       
+      
+      <th scope="col">Mobile</th>
+      <th scope="col">status</th>
+      <th scope="col">Product Image</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    {{#each products}}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{this.delivery.date}}</td>
+      <td>{{this.delivery.address}}</td>
+      <td>{{this.PaymentMethod}}</td>
+      <td>{{this.delivery.mobile}}</td>
+      <td>{{this.status}}</td>
+      <td><img style="width:60px;height:60px" src="/images/{{this.product}}.jpg"></td>
+      <td><a  class='btn btn-primary' href='/product-details?proId={{this.product}}&name=jerin'>View product</a></td>
+      <td><a  class='btn btn-danger' href='/cancel-order?ordId={{this._id}}&name=jerin'>Cancel</a></td>
+  
+
+
+    </tr>
+    {{/each}}
+  {{#each delivered}}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{this.delivery.date}}</td>
+      <td>{{this.delivery.address}}</td>
+      <td>{{this.PaymentMethod}}</td>
+      <td>{{this.delivery.mobile}}</td>
+      <td>{{this.status}}</td>
+      <td><img style="width:60px;height:60px" src="/images/{{this.product}}.jpg"></td>
+      <td><a  class='btn btn-primary' href='/product-details?proId={{this.product}}&name=jerin'>View product</a></td>
+  <td><a  class='btn btn-primary' href='/addReview?proId={{this.product}}&name=jerin'>Add Review</a></td>
+  
+
+
+    </tr>
+    {{/each}}
+ 
+    </div>
+  </tbody>
+</table>
+
+</section>

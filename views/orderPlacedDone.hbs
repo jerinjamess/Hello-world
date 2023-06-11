@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order Placed Successfully</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.message {
+			text-align: center;
+			animation: fade-in 2s ease-out;
+		}
+
+		@keyframes fade-in {
+			0% {
+				opacity: 0;
+				transform: translateY(50px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="message">
+			<h1 class="display-4">Order Placed Successfully</h1>
+			<p class="lead">Thank you for your purchase!</p>
+			<a class="btn btn-primary" href='/view-orders'>View Orders</a>
+		</div>
+	</div>
+</body>
+</html>

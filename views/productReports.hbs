@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .product-container {
+            max-width: 800px;
+            margin:  auto;
+            margin-top: 50px;
+            left:0;
+        }
+        .product-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .product-row img {
+            cursor: pointer;
+            max-width: 100px;
+            margin-right: 10px;
+        }
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+        }
+        
+        .sidebar {
+            height: 100vh;
+            width: 300px;
+            position: fixed;
+            top: 10;
+            left: 0;
+            background-color: #060b0f;
+            padding: 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="sidebar">
+        <ul class="nav flex-column">
+           <li class="nav-item">
+                <a class="nav-link" href="/superAdminHome">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Removed Merchants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Other Complaints</a>
+            </li>
+           
+            
+        </ul>
+    </div>
+
+    <div class="container product-container">
+        <h2>Reported Products</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    
+                    <th>Product Name</th>
+                    <th>User </th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            {{#each report}}
+            <tbody>
+                <tr>
+                    <td>{{this.date}}</td>
+                    
+                    <td>{{this.productName}}</td>
+                    <td>{{this.userName}}</td>
+                    <td>{{this.why}}</td>
+                    
+                    <td>
+                        <a href='/product-details?proId={{this.proId}}' class="btn btn-success">View Product</a>
+                    </td>
+                    <td>
+                        <a href='#' class="btn btn-danger">Remove product</a>
+                    </td>
+                    <td><a class="btn btn-danger" href='#'>Remove Merchant</a></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img class="modal-image" src="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('img').click(function() {
+                var imageSrc = $(this).attr('src');
+                $('.modal-image').attr('src', imageSrc);
+            });
+        });
+    </script>
+</body>
+</html>

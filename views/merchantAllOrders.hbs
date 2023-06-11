@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+    h2 {
+      margin-bottom: 30px;
+    }
+    
+    .custom-table {
+      margin-left: 10;
+      margin-right: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Order Details</h2>
+    <table class="table table-striped custom-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Delivery Address</th>
+          <th>Mobile</th>
+          <th>Date</th>
+          <th>Payment Method</th>
+          <th>Status</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each result}}
+        <tr>
+          <td>{{this._id}}</td>
+          <td>{{this.delivery.address}}</td>
+          <td>{{this.delivery.mobile}}</td>
+          <td>{{this.delivery.date}}</td>
+          <td>{{this.PaymentMethod}}</td>
+          <td>{{this.status}}</td>
+         
+            <td>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="changeStatusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Change Status
+              </button>
+              <div class="dropdown-menu" aria-labelledby="changeStatusDropdown">
+                <a class="dropdown-item" href="/orderConfirmed?ordId={{this._id}}"> Order confirmed</a>
+                <a class="dropdown-item" href="/productPacked?ordId={{this._id}}">Product Packed</a>
+                <a class="dropdown-item" href="/outForDelivey?ordId={{this._id}}"> Out for delivery</a>
+                 <a class="dropdown-item" href="/delivered?ordId={{this._id}}"> Product Delivered</a>
+                <!-- Add more status options as needed -->
+                </td>
+                 <td>
+            <a class="btn btn-primary" href="/merchantViewProduct?proId={{this.product}}&name=jerin">View Product</a>
+            </td>
+              </div>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.dropdown-item').click(function() {
+        var status = $(this).text();
+        var orderId = $(this).closest('tr').find('td:first-child').text();
+        // Perform the necessary logic to change the status of the order using the orderId and status
+        // You can use JavaScript or make an AJAX request to update the status on the server
+        // Example AJAX request:
+        // $.ajax({
+        //   url: '/change-status',
+        //   method: 'POST',
+        //   data: { orderId: orderId, status: status },
+        //   success: function(response) {
+        //     // Handle the success response
+        //   },
+        //   error: function(error) {
+        //     // Handle the error response
+        //   }
+        // });
+      });
+    });
+  </script>
+</body>
+</html>

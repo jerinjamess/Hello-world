@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Your Cart</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Image</th>
+        
+      </tr>
+    </thead>
+    {{#each products}}
+    <tbody>
+      <tr>
+        <td>{{this.Name}}</td>
+        <td>{{this.price}}</td>
+        <td>
+          <input type="number" class="form-control" value="1">
+        </td>
+         <td><img style="width:60px;height:60px" src="/images/{{this._id}}.jpg"></td>
+         <td><a class="btn btn-danger" href='/remove-cart-product?proId={{this._id}}'>Remove</a></td>
+      </tr>
+      {{/each}}
+      
+    </tfoot>
+  </table>
+  <h3 class="float-right mr-5">Total price:{{this.totalPrice}}</h3>
+ 
+  <a href='/cart-place-order' class="btn btn-primary  mt-3" style="width:100%;"><B>Buy All</B></a>
+</div>
